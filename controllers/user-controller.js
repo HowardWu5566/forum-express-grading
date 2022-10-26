@@ -56,7 +56,6 @@ const userController = {
     ])
       .then(([userProfile, comments]) => {
         if (!userProfile) throw new Error("User didn't exist!")
-        console.log(userProfile.toJSON())
         res.render('users/profile', { user: getUser(req), userProfile: userProfile.toJSON(), comments })
       })
       .catch(err => next(err))

@@ -17,6 +17,7 @@ module.exports = {
       password: await bcrypt.hash('12345678', 10),
       is_admin: true,
       name: 'root',
+      image: 'https://secure.gravatar.com/avatar/12122a41f5e1d5f75d7b0aaf67199e7e?s=300&d=mm&r=g',
       created_at: new Date(),
       updated_at: new Date()
     }, {
@@ -24,6 +25,7 @@ module.exports = {
       password: await bcrypt.hash('12345678', 10),
       is_admin: false,
       name: 'user1',
+      image: 'https://secure.gravatar.com/avatar/12122a41f5e1d5f75d7b0aaf67199e7e?s=300&d=mm&r=g',
       created_at: new Date(),
       updated_at: new Date()
     }, {
@@ -31,6 +33,7 @@ module.exports = {
       password: await bcrypt.hash('12345678', 10),
       is_admin: false,
       name: 'user2',
+      image: 'https://secure.gravatar.com/avatar/12122a41f5e1d5f75d7b0aaf67199e7e?s=300&d=mm&r=g',
       created_at: new Date(),
       updated_at: new Date()
     }])
