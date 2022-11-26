@@ -17,7 +17,7 @@ module.exports = {
       password: await bcrypt.hash('12345678', 10),
       is_admin: true,
       name: 'root',
-      image: 'https://secure.gravatar.com/avatar/12122a41f5e1d5f75d7b0aaf67199e7e?s=300&d=mm&r=g',
+      image: 'https://i.imgur.com/YOTISNv.jpg',
       created_at: new Date(),
       updated_at: new Date()
     }, {
@@ -25,7 +25,7 @@ module.exports = {
       password: await bcrypt.hash('12345678', 10),
       is_admin: false,
       name: 'user1',
-      image: 'https://secure.gravatar.com/avatar/12122a41f5e1d5f75d7b0aaf67199e7e?s=300&d=mm&r=g',
+      image: 'https://i.imgur.com/YOTISNv.jpg',
       created_at: new Date(),
       updated_at: new Date()
     }, {
@@ -33,7 +33,7 @@ module.exports = {
       password: await bcrypt.hash('12345678', 10),
       is_admin: false,
       name: 'user2',
-      image: 'https://secure.gravatar.com/avatar/12122a41f5e1d5f75d7b0aaf67199e7e?s=300&d=mm&r=g',
+      image: 'https://i.imgur.com/YOTISNv.jpg',
       created_at: new Date(),
       updated_at: new Date()
     }])
@@ -46,6 +46,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Users', {})
+    await queryInterface.bulkDelete('Users', { name: ['root', 'user1', 'user2'] })
   }
 }

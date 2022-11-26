@@ -8,12 +8,13 @@ module.exports = {
       { type: queryInterface.sequelize.QueryTypes.SELECT }
     )
     await queryInterface.bulkInsert('Restaurants',
-      Array.from({ length: 50 }, () => ({
+      Array.from({ length: 50 }, (_, index) => ({
         name: faker.name.fullName(),
         tel: faker.phone.number(),
         address: faker.address.streetAddress(),
         opening_hours: '08:00',
-        image: `https://loremflickr.com/320/240/restaurant,food/?random=${Math.random() * 100}`,
+        image: `https://loremflickr.com/320/240/restaurant,food/?lock=${index}`,
+        // ?random=${Math.random() * 100}`,
         description: faker.lorem.text(),
         created_at: new Date(),
         updated_at: new Date(),
