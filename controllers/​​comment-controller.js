@@ -1,9 +1,23 @@
-const { Comment, User, Restaurant } = require('../models')
+const { Comment, User, Restaurant, Category } = require('../models')
 const commentController = {
   postComment: (req, res, next) => {
     const { restaurantId, text } = req.body
     const userId = req.user.id
-    if (!text) throw new Error('Comment text is required!')
+    if (!text.trim()) throw new Error('Comment text is required!')
+    if (text.length > 300) {
+      return Restaurant.findByPk(restaurantId, {
+        include: [Category, Comment]
+      })
+        .then(restaurant => {
+          const errorMessages = 'Comment text shouldn\'t more than 300 characters!'
+          res.render('restaurant', {
+            errorMessages,
+            text,
+            restaurant: restaurant.toJSON()
+          })
+        })
+        .catch(err => next(err))
+    }
     return Promise.all([
       User.findByPk(userId),
       Restaurant.findByPk(restaurantId)
